@@ -1,0 +1,9 @@
+% bibentry template for lsst.bib in https://github.com/lsst/lsst-texmf/blob/main/texmf/bibtex/bib/lsst.bib
+
+@DocuShare{DMTN-235,
+   author = { Russ Allbery },
+    title = {Authorization scopes for the Rubin Science Platform},
+     year = 2022,
+    month = Jul,
+   handle = {DMTN-235},
+      url = {https://dmtn-235.lsst.io } }
