@@ -5,11 +5,20 @@ The authentication service for the Rubin Science Platform (Gafaelfawr_) uses tok
 Each token is associated with a list of scopes, which are used to make authorization decisions.
 This tech note lists the scopes currently in use by the Science Platform, defines them, and discusses the services to which each scope grants access.
 
+.. _Gafaelfawr: https://gafaelfawr.lsst.io/
+
 This document will be updated when new scopes are added, their meanings are changed, or the services to which they grant access change.
+
+.. _purpose:
+
+Purpose of scopes
+=================
+
+Scopes are used for "coarse-grained" access control: whether a user can access a specific component or API at all, or whether the user is allowed to access administrative interfaces for a service.
+"Fine-grained" access control decisions made by services, such as whether a user with general access to the service is able to run a specific query or access a specific image, are instead made based on the user's group membership.
 
 How token scopes are assigned and how they are used for authorization is discussed in DMTN-234_, which presents the design for the Science Platform authentication service.
 
-.. _Gafaelfawr: https://gafaelfawr.lsst.io/
 .. _DMTN-234: https://dmtn-234.lsst.io/
 
 Scope naming
@@ -94,3 +103,24 @@ The following scopes are currently in use:
     Can create and modify tokens for the same user as the token that has this scope (as opposed to ``admin:token``, which allows any operation on tokens for any user).
     This scope is automatically granted to users when they authenticate.
     It exists as a separate scope primarily so that users can choose not to grant it to user tokens that they create, so that their programmatic tokens cannot themselves create new tokens.
+
+Creating new scopes
+===================
+
+Many authorization systems discover too late that they've allowed scopes to proliferate to the point where they become confusing and difficult to keep track of.
+To avoid this, the Rubin Science Platform only creates new scopes when there is a clear and compelling need.
+Specifically,
+
+#. there exist two users who should receive different levels of access in a way that cannot be represented by the existing scopes, and
+#. this access control difference must be done with scopes and not groups.
+
+When to use scopes and when to use groups is fuzzy, but the general rule of thumb (as mentioned in :ref:`Purpose <purpose>` above) is that scopes control access to a service in its entirety, or to the administrative API as opposed to the user API of the service.
+Groups should be used for all other access control.
+Groups must be interpreted by the service (or by another service to which it delegates access control decisions).
+Scopes are enforced by the authentication layer, before the service ever sees the request.
+
+Also be aware that the addition of a scope that a user may be granted makes the token management UI more complex for the user.
+When the user is creating new tokens, they are expected to pick the scopes that token should have so that it does not have excessive access.
+Ideally, the number of scopes they're presented with should be no more than 10 and should be obvious and self-explanatory.
+
+If, after considering those factors, you believe a new scope is warranted, talk to the SQuaRE team.
