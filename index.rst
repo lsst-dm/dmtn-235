@@ -9,6 +9,16 @@ This tech note lists the scopes currently in use by the Science Platform, define
 
 This document will be updated when new scopes are added, their meanings are changed, or the services to which they grant access change.
 
+.. note::
+
+   This is part of a tech note series on identity management for the Rubin Science Platform.
+   The primary documents are DMTN-234_, which describes the high-level design; DMTN-224_, which describes the implementation; and SQR-069_, which provides a history and analysis of the decisions underlying the design and implementation.
+   See the `references section of DMTN-224 <https://dmtn-224.lsst.io/#references>`__ for a complete list of related documents.
+
+.. _DMTN-234: https://dmtn-234.lsst.io/
+.. _DMTN-224: https://dmtn-224.lsst.io/
+.. _SQR-069: https://sqr-069.lsst.io/
+
 .. _purpose:
 
 Purpose of scopes
