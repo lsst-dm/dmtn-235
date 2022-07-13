@@ -13,7 +13,7 @@ serial_number: "235"
 doc_id: "DMTN-235"
 
 # Title of the document, without the series/serial designation
-doc_title: "Authorization scopes for the Rubin Science Platform"
+doc_title: "Token scopes for the Rubin Science Platform"
 
 # Author names, ordered as a list. Each author name should be formatted as 'First Last'
 authors:
