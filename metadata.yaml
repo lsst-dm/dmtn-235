@@ -13,7 +13,7 @@ serial_number: "235"
 doc_id: "DMTN-235"
 
 # Title of the document, without the series/serial designation
-doc_title: "Authorization scopes for the Rubin Science Platform"
+doc_title: "Token scopes for the Rubin Science Platform"
 
 # Author names, ordered as a list. Each author name should be formatted as 'First Last'
 authors:
@@ -34,17 +34,22 @@ authors:
 # doi: 10.5281/zenodo.#####
 
 # Copyright statement
-copyright: "2022, Association of Universities for Research in Astronomy, Inc. (AURA)"
+copyright: >-
+  2022, Association of Universities for Research in Astronomy, Inc. (AURA)
 
 # Description. A short, 1-2 sentence statemement used by document indices.
-description: "Lists token scopes used by the authentication component of the Rubin Science Platform, defines them, and documents the services to which they grant access."
+description: >
+  Lists token scopes used by the authentication component of the Rubin Science
+  Platform, defines them, and documents the services to which they grant
+  access.
 
 # Abstract, if available
-# abstract: >
-#           Write your paragraph
-#           here with multiple lines.
-#
-#           You can have multiple paragraphs too.
+abstract: >
+  The authentication service for the Rubin Science Platform uses tokens to
+  authenticate users.  Each token is associated with a list of scopes, which
+  are used to make authorization decisions.  This tech note lists the scopes
+  currently in use by the Science Platform, defines them, and discusses the
+  services to which each scope grants access.
 
 # URL where this document is published by Read the Docs. e.g. http://sqr-001.lsst.codes
 url: "https://dmtn-235.lsst.io"
