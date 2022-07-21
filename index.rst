@@ -126,7 +126,7 @@ Specifically,
 
 When to use scopes and when to use groups is fuzzy, but the general rule of thumb (as mentioned in :ref:`Purpose <purpose>` above) is that scopes control access to a service in its entirety, or to the administrative API as opposed to the user API of the service.
 Groups should be used for all other access control.
-Groups must be interpreted by the service (or by another service to which it delegates access control decisions).
+Groups must be interpreted by each service (or by another service to which the first service delegates access control decisions).
 Scopes are enforced by the authentication layer, before the service ever sees the request.
 
 Also be aware that the addition of a scope that a user may be granted makes the token management UI more complex for the user.
