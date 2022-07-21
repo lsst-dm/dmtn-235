@@ -121,7 +121,7 @@ Many authorization systems discover too late that they've allowed scopes to prol
 To avoid this, the Rubin Science Platform only creates new scopes when there is a clear and compelling need.
 Specifically,
 
-#. there exist two users who should receive different levels of access in a way that cannot be represented by the existing scopes, and
+#. there exist two users who should receive different levels of access to the same deployment in a way that cannot be represented by the existing scopes, and
 #. this access control difference must be done with scopes and not groups.
 
 When to use scopes and when to use groups is fuzzy, but the general rule of thumb (as mentioned in :ref:`Purpose <purpose>` above) is that scopes control access to a service in its entirety, or to the administrative API as opposed to the user API of the service.
