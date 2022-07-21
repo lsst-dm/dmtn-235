@@ -118,19 +118,19 @@ Creating new scopes
 ===================
 
 Many authorization systems discover too late that they've allowed scopes to proliferate to the point where they become confusing and difficult to keep track of.
-To avoid this, the Rubin Science Platform only creates new scopes when there is a clear and compelling need.
+For example, granting additional scopes to users makes the token management UI more complex for the user.
+When the user is creating new tokens, they are expected to pick the scopes that token should have so that it does not have excessive access.
+Ideally, the number of scopes they're presented with should be no more than 10 and should be obvious and self-explanatory.
+
+To avoid a confusing proliferation of scopes, the Rubin Science Platform only creates new scopes when there is a clear and compelling need.
 Specifically,
 
 #. there exist two users who should receive different levels of access to the same deployment in a way that cannot be represented by the existing scopes, and
 #. this access control difference must be done with scopes and not groups.
 
-When to use scopes and when to use groups is fuzzy, but the general rule of thumb (as mentioned in :ref:`Purpose <purpose>` above) is that scopes control access to a service in its entirety, or to the administrative API as opposed to the user API of the service.
-Groups should be used for all other access control.
+As discussed in :ref:`Purpose <purpose>` above, scopes control access to a service in its entirety, or to the administrative API as opposed to the user API of the service.
+Groups are used for all other access control.
 Groups must be interpreted by each service (or by another service to which the first service delegates access control decisions).
 Scopes are enforced by the authentication layer, before the service ever sees the request, since they determine access to the service in the first place.
 
-Also be aware that the addition of a scope that a user may be granted makes the token management UI more complex for the user.
-When the user is creating new tokens, they are expected to pick the scopes that token should have so that it does not have excessive access.
-Ideally, the number of scopes they're presented with should be no more than 10 and should be obvious and self-explanatory.
-
-If, after considering those factors, you believe a new scope is warranted, talk to the SQuaRE team.
+Developers of Science Platform services who, after considering the above factors, still believe a new scope is warranted should raise the issue with the SQuaRE team.
