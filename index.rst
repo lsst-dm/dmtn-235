@@ -90,6 +90,10 @@ The following scopes are currently in use:
 .. _cachemachine: https://github.com/lsst-sqre/cachemachine
 .. _sherlock: https://github.com/lsst-sqre/sherlock
 
+``exec:internal-tools``
+    Grants access to project-internal tools.
+    Examples include observatory logging tools, internal monitoring tools, and tools to inspect data that has not yet been released to general users.
+
 ``exec:notebook``
     Allows the user to spawn a lab in the Notebook Aspect.
     This in turn allows arbitrary command execution within an unprivileged JupyterLab_ pod.
