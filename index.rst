@@ -1,13 +1,12 @@
-:tocdepth: 1
+###########################################
+Token scopes for the Rubin Science Platform
+###########################################
 
-.. sectnum::
+.. abstract::
 
-Abstract
-========
-
-The authentication service for the Rubin Science Platform (Gafaelfawr_) uses tokens to authenticate users.
-Each token is associated with a list of scopes, which are used to make authorization decisions.
-This tech note lists the scopes currently in use by the Science Platform, defines them, and discusses the services to which each scope grants access.
+   The authentication service for the Rubin Science Platform (Gafaelfawr_) uses tokens to authenticate users.
+   Each token is associated with a list of scopes, which are used to make authorization decisions.
+   This tech note lists the scopes currently in use by the Science Platform, defines them, and discusses the services to which each scope grants access.
 
 .. _Gafaelfawr: https://gafaelfawr.lsst.io/
 
@@ -19,10 +18,6 @@ This document will be updated when new scopes are added, their meanings are chan
    The primary documents are :dmtn:`234`, which describes the high-level design; :dmtn:`224`, which describes the implementation; and :sqr:`069`, which provides a history and analysis of the decisions underlying the design and implementation.
    See the `references section of DMTN-224 <https://dmtn-224.lsst.io/#references>`__ for a complete list of related documents.
 
-.. _DMTN-234: https://dmtn-234.lsst.io/
-.. _DMTN-224: https://dmtn-224.lsst.io/
-.. _SQR-069: https://sqr-069.lsst.io/
-
 .. _purpose:
 
 Purpose of scopes
@@ -32,8 +27,6 @@ Scopes are used for "coarse-grained" access control: whether a user can access a
 "Fine-grained" access control decisions made by services, such as whether a user with general access to the service is able to run a specific query or access a specific image, are instead made based on the user's group membership.
 
 How token scopes are assigned and how they are used for authorization is discussed in :dmtn:`234`, which presents the design for the Science Platform authentication service.
-
-.. _DMTN-234: https://dmtn-234.lsst.io/
 
 Scope naming
 ============
@@ -55,7 +48,7 @@ Current scopes
 The following scopes are currently in use:
 
 ``admin:jupyterlab``
-    Grants access to inspection and deletion routes on the Nublado (Notebook Aspect) lab controller (see :sqr:`066`).
+    Grants access to inspection and deletion routes on the Nublado (Notebook Aspect) controller (see :sqr:`066`).
     JupyterHub has access to a token with this scope so that it can make lab controller calls that it needs to be able to perform without access to a user token, such as deleting old labs and checking lab status.
 
 ``admin:token``
@@ -106,12 +99,10 @@ The following scopes are currently in use:
 
 ``read:image``
     Grants access to retrieve images accessible via the Science Platform.
-    Currently, this controls access to HiPS (see :dmtn:`230`), SODA image cutout (see :dmtn:`208`), and the DataLink ``/api/datalinker/links`` route (as implemented by datalinker_).
+    Currently, this controls access to HiPS (see :dmtn:`230`), SODA image cutout (see :dmtn:`208`), the DataLink ``/api/datalinker/links`` route (see :dmtn:`238`), and image retrieval from client-server Butler.
 
     Following the guidelines in :ref:`purpose`, there is a single scope for image access that controls whether the user can download images at all.
     Access to specific images, such as access controls by data release, will be handled via groups.
-
-.. _datalinker: https://github.com/lsst-sqre/datalinker
 
 ``read:tap``
     Grants access to perform queries in the TAP service.
@@ -131,18 +122,8 @@ Expected future scopes
 ``write:tap``
     Write access to personal and group database tables accessible by the TAP service.
 
-It's not yet clear whether the anticipated client/server Butler service (see :dmtn:`176`, :dmtn:`169`, and :dmtn:`182`) will need a separate scope or will reuse one of the existing scopes plus the ``write:tap`` scope.
-
-Obsolete scopes
-===============
-
-``admin:provision``
-    This scope was previously used to control access to the API that provisions home directories and other resources for new users (done by the moneypenny_ service).
-    This has been replaced with the new Nublado lab controller (see :sqr:`066`), which uses ``admin:jupyterhub`` in a related but not identical way.
-
-.. _moneypenny: https://github.com/lsst-sqre/moneypenny
-
-    As environments are upgraded to use the Nublado lab controller to spawn user lab pods, this scope will be retired.
+It's not yet clear whether the anticipated client/server Butler service (see :dmtn:`176`, :dmtn:`169`, and :dmtn:`182`) will need a separate scope or will reuse existing scopes plus the ``write:tap`` scope.
+Currently, read access to images via the Butler is controlled by the ``read:image`` scope.
 
 Creating new scopes
 ===================
