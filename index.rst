@@ -82,10 +82,10 @@ The following scopes are currently in use:
     Allows the user to spawn a lab in the Notebook Aspect.
     This in turn allows arbitrary command execution within an unprivileged JupyterLab_ pod.
 
-.. _JupyterLab: https://jupyterlab.readthedocs.io/en/stable/
-
     For the time being, this scope is also used to control WebDAV access to the home directory space for the authenticating user, since that home directory space is used primarily by the Notebook Aspect.
     This may eventually be controlled by a different scope if the permissions need to be more granular.
+
+.. _JupyterLab: https://jupyterlab.readthedocs.io/en/stable/
 
 ``exec:portal``
     Allows the user to perform operations in the Portal Aspect.
