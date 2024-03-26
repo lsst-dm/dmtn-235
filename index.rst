@@ -107,6 +107,11 @@ The following scopes are currently in use:
 ``read:tap``
     Grants access to perform queries in the TAP service.
 
+``write:files``
+    Grants write access to a user's file space.
+    Currently, this is used to control access to the user's WebDAV service.
+    This does not grant access to other user's files, only to the ones owned by the authenticated user.
+
 ``write:sasquatch``
     Grants access to write metrics to the Sasquatch telemetry service (see :sqr:`067`).
     This scope is separate so that it can be granted to service tokens for automated processes (often outside of the Science Platform) that need to record metrics.
