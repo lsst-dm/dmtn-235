@@ -5,7 +5,7 @@ canonical_url = "https://dmtn-235.lsst.io/"
 github_url = "https://github.com/lsst-dm/dmtn-235"
 github_default_branch = "main"
 date_created = 2022-07-12
-date_updated = 2024-01-31
+date_updated = 2024-03-26
 organization.name = "Vera C. Rubin Observatory"
 organization.ror = "https://ror.org/048g3cy84"
 license.id = "CC-BY-4.0"
@@ -18,3 +18,6 @@ internal_id = "allberyr"
 name = "Rubin Observatory Project Office"
 internal_id = "RubinObs"
 address = "950 N. Cherry Ave., Tucson, AZ 85719, USA"
+
+[technote.status]
+state = "stable"
