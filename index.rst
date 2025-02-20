@@ -26,6 +26,9 @@ Purpose of scopes
 Scopes are used for "coarse-grained" access control: whether a user can access a specific component or API at all, or whether the user is allowed to access administrative interfaces for a service.
 "Fine-grained" access control decisions made by services, such as whether a user with general access to the service is able to run a specific query or access a specific image, are instead made based on the user's group membership.
 
+Specifically, token scopes are not used to control access to data releases.
+Access decisions for specific data releases should be made based on user group membership.
+
 How token scopes are assigned and how they are used for authorization is discussed in :dmtn:`234`, which presents the design for the Science Platform authentication service.
 
 Scope naming
