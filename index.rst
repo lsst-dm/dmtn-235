@@ -64,16 +64,19 @@ The following scopes are currently in use:
     This scope is used to create tokens for bot users by mobu_, noteburst_, and times-square_.
     It is also used by administrators to impersonate users for debugging purposes.
 
-.. _mobu: https://github.com/lsst-sqre/mobu
-.. _noteburst: https://noteburst.lsst.io/
-.. _times-square: https://github.com/lsst-sqre/times-square
+    .. _mobu: https://github.com/lsst-sqre/mobu
+    .. _noteburst: https://noteburst.lsst.io/
+    .. _times-square: https://github.com/lsst-sqre/times-square
+
+``admin:userinfo``
+    Grants access to view the user information of any user.
+    This is separate from ``admin:token`` because some applications, such as the Qserv Kafka bridge, need to obtain user information such as quotas without having access to a user's token.
 
 ``exec:admin``
     Grants access to various privileged services that should only be used by deployment administrators.
     This is a bit of a grab bag for administrative access by humans to services that don't need to allow access from other services.
 
-    Currently, this grants access to the admin APIs of mobu_, noteburst_, sherlock_, and times-square_, and to the admin routes for the Portal Aspect.
-    We may replace this scope with one or more scopes starting with ``admin:`` to keep all admin scopes similarly named.
+    Currently, this grants access to the admin APIs of mobu_, noteburst_, and times-square_.
 
 .. _sherlock: https://github.com/lsst-sqre/sherlock
 
@@ -96,6 +99,11 @@ The following scopes are currently in use:
     This grants access only to the Portal itself, not to any of the underlying services that the Portal may query on the user's behalf.
     To fully use all Portal functionality, the user will also need ``read:image`` and ``read:tap`` scopes, and possibly others.
     The Portal requests those scopes if they're available, but does not require them to access the Portal itself.
+
+``exec:portal-admin``
+    Grants access to the admin routes of the Portal.
+    This can be used to view internal debugging information about the Portal and perform a few administrative actions.
+    It is kept separate from ``exec:admin`` so that it can be granted to the Portal development team to allow them to debug production issues.
 
 ``read:alertdb``
     Grants access to receive alert packets and schemas from the alert archive database.
