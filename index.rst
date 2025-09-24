@@ -115,6 +115,13 @@ The following scopes are currently in use:
     Following the guidelines in :ref:`purpose`, there is a single scope for image access that controls whether the user can download images at all.
     Access to specific images, such as access controls by data release, will be handled via groups.
 
+``read:sasquatch``
+    Grants read access to Sasquatch InfluxDB databases.
+    Specifically, grants access to the connection information discovery endpoint provided by Repertoire_, which is used to retrieve read-only authentication information.
+    The visible databases and connection credentials may be further restricted based on the user's group membership.
+
+    .. _Repertoire: https://repertoire.lsst.io/
+
 ``read:tap``
     Grants access to perform queries in the TAP service.
 
