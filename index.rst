@@ -54,6 +54,10 @@ The following scopes are currently in use:
     Grants access to inspection and deletion routes on the Nublado (Notebook Aspect) controller (see :sqr:`066`).
     JupyterHub has access to a token with this scope so that it can make lab controller calls that it needs to be able to perform without access to a user token, such as deleting old labs and checking lab status.
 
+``admin:notifications``
+    Grants the ability to send user notifications as an admin and see all user notifications.
+    See :sqr:`118` for more details.
+
 ``admin:token``
     Grants token administrator powers.
     Users authenticated with a token with this scope can view, create, modify, and delete tokens for any user.
@@ -78,7 +82,9 @@ The following scopes are currently in use:
 
     Currently, this grants access to the admin APIs of mobu_, noteburst_, and times-square_.
 
-.. _sherlock: https://github.com/lsst-sqre/sherlock
+``exec:docverse``
+    Grants permission to access the Docverse organization admin API.
+    See :sqr:`112` for more details.
 
 ``exec:internal-tools``
     Grants access to project-internal tools.
@@ -108,6 +114,9 @@ The following scopes are currently in use:
 ``read:alertdb``
     Grants access to receive alert packets and schemas from the alert archive database.
 
+``read:checkerboard``
+    Grants read access to Checkerboard, which maintains a mapping of Slack usernames to GitHub identities for Rubin Observatory project members.
+
 ``read:image``
     Grants access to retrieve images accessible via the Science Platform.
     Currently, this controls access to HiPS (see :dmtn:`230`), SODA image cutout (see :dmtn:`208`), the DataLink ``/api/datalinker/links`` route (see :dmtn:`238`), and image retrieval from client-server Butler.
@@ -130,9 +139,26 @@ The following scopes are currently in use:
     Currently, this is used to control access to the user's WebDAV service.
     This does not grant access to other user's files, only to the ones owned by the authenticated user.
 
+``write:git-lfs``
+    Grants write access to the git-lfs_ repositories maintained by Rubin Observatory.
+    These are used for primarily internal purposes, such as large test data files.
+    Read access is not restricted.
+
+    .. _git-lfs: https://git-lfs.com/
+
+``write:notifications``
+    Grants the ability to send notifications to users and to see all notifications sent by the authenticated identity.
+    See :sqr:`118` for more details.
+
 ``write:sasquatch``
     Grants access to write metrics to the Sasquatch telemetry service (see :sqr:`067`).
     This scope is separate so that it can be granted to service tokens for automated processes (often outside of the Science Platform) that need to record metrics.
+
+``write:turborepo``
+    Grants read and write access to the Turborepo_ remote cache.
+    This is used only by Rubin SQuaRE developers.
+
+    .. _Turborepo: https://turborepo.dev/
 
 ``user:token``
     Can create and modify tokens for the same user as the token that has this scope (as opposed to ``admin:token``, which allows any operation on tokens for any user).
@@ -144,9 +170,6 @@ Expected future scopes
 
 ``write:tap``
     Write access to personal and group database tables accessible by the TAP service.
-
-It's not yet clear whether the anticipated client/server Butler service (see :dmtn:`176`, :dmtn:`169`, and :dmtn:`182`) will need a separate scope or will reuse existing scopes plus the ``write:tap`` scope.
-Currently, read access to images via the Butler is controlled by the ``read:image`` scope.
 
 Creating new scopes
 ===================
