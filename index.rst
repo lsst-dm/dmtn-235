@@ -112,14 +112,16 @@ The following scopes are currently in use:
     It is kept separate from ``exec:admin`` so that it can be granted to the Portal development team to allow them to debug production issues.
 
 ``read:alertdb``
-    Grants access to receive alert packets and schemas from the alert archive database.
+    Grants access to receive alert packets and schemas from the internal alert archive database in the Prompt Processing Phalanx environments.
+    This scope is not used to control science user access to alerts via the Herald service (see :sqr:`114`).
+    That access, like other Rubin data products, is controlled with the ``read:image`` scope.
 
 ``read:checkerboard``
     Grants read access to Checkerboard, which maintains a mapping of Slack usernames to GitHub identities for Rubin Observatory project members.
 
 ``read:image``
     Grants access to retrieve images accessible via the Science Platform.
-    Currently, this controls access to HiPS (see :dmtn:`230`), SODA image cutout (see :dmtn:`208`), the DataLink ``/api/datalinker/links`` route (see :dmtn:`238`), and image retrieval from client-server Butler.
+    Currently, this controls access to HiPS (see :dmtn:`230`), SODA image cutout (see :dmtn:`208`), the DataLink ``/api/datalinker/links`` route (see :dmtn:`238`), image retrieval from client-server Butler, and alert retrieval via Herald (see :sqr:`114`).
 
     Following the guidelines in :ref:`purpose`, there is a single scope for image access that controls whether the user can download images at all.
     Access to specific images, such as access controls by data release, will be handled via groups.
