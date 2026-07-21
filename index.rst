@@ -162,6 +162,10 @@ The following scopes are currently in use:
 
     .. _Turborepo: https://turborepo.dev/
 
+``write:obsforge``
+    Grants access to send notifications to ObsForge and register observations.
+    See :sqr:`115` for more details.
+    
 ``user:token``
     Can create and modify tokens for the same user as the token that has this scope (as opposed to ``admin:token``, which allows any operation on tokens for any user).
     This scope is automatically granted to users when they authenticate.
