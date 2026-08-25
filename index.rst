@@ -58,10 +58,14 @@ The following scopes are currently in use:
     Grants the ability to send user notifications as an admin and see all user notifications.
     See :sqr:`118` for more details.
 
+``admin:oidc``
+    Grants the ability to register and manage OpenID Connect clients.
+    These are clients for which the Gafaelfawr_ component of the Rubin Science Platform acts as an OpenID Connect identity provider.
+    This is used for some third-party services running in the RSP, and by IDACs (see :dmtn:`253`).
+
 ``admin:token``
     Grants token administrator powers.
     Users authenticated with a token with this scope can view, create, modify, and delete tokens for any user.
-    Administrators (as configured in Gafaelfawr_) are automatically granted this scope when they authenticate.
 
     This scope effectively grants full administrative access to the Science Platform and all of its services, since even if the user lacks other scopes, they can use this scope to create a new token with any scopes they wish.
 
