@@ -140,6 +140,9 @@ The following scopes are currently in use:
 ``read:tap``
     Grants access to perform queries in the TAP service.
 
+``write:consdb``
+    Grants access to the write API for the ConsDB service, which provides a frontend to the consolidated database.
+
 ``write:files``
     Grants write access to a user's file space.
     Currently, this is used to control access to the user's WebDAV service.
@@ -156,6 +159,10 @@ The following scopes are currently in use:
     Grants the ability to send notifications to users and to see all notifications sent by the authenticated identity.
     See :sqr:`118` for more details.
 
+``write:obsforge``
+    Grants access to send notifications to ObsForge and register observations.
+    See :sqr:`115` for more details.
+
 ``write:sasquatch``
     Grants access to write metrics to the Sasquatch telemetry service (see :sqr:`067`).
     This scope is separate so that it can be granted to service tokens for automated processes (often outside of the Science Platform) that need to record metrics.
@@ -166,10 +173,6 @@ The following scopes are currently in use:
 
     .. _Turborepo: https://turborepo.dev/
 
-``write:obsforge``
-    Grants access to send notifications to ObsForge and register observations.
-    See :sqr:`115` for more details.
-    
 ``user:token``
     Can create and modify tokens for the same user as the token that has this scope (as opposed to ``admin:token``, which allows any operation on tokens for any user).
     This scope is automatically granted to users when they authenticate.
